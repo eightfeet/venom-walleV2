@@ -14,14 +14,14 @@ Number.isFinite =
 
 import Loading from '@eightfeet/loading';
 import Picker, { Option, Wheels, KeyMap } from '@eightfeet/picker';
-import validate from 'validate-by-health';
+import validate from './validate';
 import Message from '@eightfeet/message';
 import Modal from '@eightfeet/modal';
 
 
 // import { createInlineStyles } from './inlineStyle';
 
-const keyMap: KeyMap = { display: 'dis', value: 'val', childs: 'childs' };
+const keyMap: KeyMap = { display: 'date', value: 'val' };
 
 const wheels: Wheels<{
     display: 'date',
@@ -55,7 +55,7 @@ const wheels: Wheels<{
 const Opt: Option = {
     id: 'mobileId',
     wheels,
-    trigger: '#pickerjsontype',
+    trigger: '#btna',
     keyMap,
     cancelBtnText: 'cancel',
     confirmBtnText: 'ensure',
@@ -88,6 +88,13 @@ const Opt: Option = {
 }
 
 const test = new Picker(Opt);
+const error = validate({
+    VPhone_A: 'd2312123123',
+    VPhone_B: '12312123123',
+    VPhone_D: '12312123123',
+    VPhone_E: 's2312123123'
+}, true)
 
+alert(JSON.stringify(error))
 
 export { Loading, Picker, validate, Message, Modal };
