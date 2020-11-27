@@ -88,13 +88,6 @@ const Opt: Option = {
 }
 
 const test = new Picker(Opt);
-const error = validate({
-    VPhone_A: 'd2312123123',
-    VPhone_B: '12312123123',
-    VPhone_D: '12312123123',
-    VPhone_E: 's2312123123'
-}, true)
 
-alert(JSON.stringify(error))
 
 export { Loading, Picker, validate, Message, Modal };
