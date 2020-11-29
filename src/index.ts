@@ -12,82 +12,66 @@ Number.isFinite =
         return typeof value === 'number' && isFinite(value);
     };
 
+
+import AddressModal from './modules/AddressModal';
+import ResultModal from './modules/ResultModal';
+import Msg from './modules/Msg';
+import NoticeModal from './modules/NoticeModal';
+
 import Loading from '@eightfeet/loading';
-import Picker, { Option, Wheels, KeyMap } from '@eightfeet/picker';
+import Picker from '@eightfeet/picker';
 import validate from './validate';
 import Message from '@eightfeet/message';
-import Modal from '@eightfeet/modal';
+import Modal, {createInlineStyles} from '@eightfeet/modal';
 
+// tools
+import { isPC, setEmBase, createDom, removeDom, combineDomByClass } from './utils/htmlFactory';
+import { formatWheelsData, getPositionByDefaultValue } from './utils/regionsWheelsHelper';
+import { isObject, countDown, dormancyFor, fixpx } from './utils/tools';
+import { onceTransitionEnd, onceAnimationEnd } from './utils/web-animation-club';
 
-// import { createInlineStyles } from './inlineStyle';
-
-const keyMap: KeyMap = { display: 'date', value: 'val' };
-
-const wheels: Wheels<{
-    display: 'date',
-    value: 'val',
-}> =  [{
-    data: [
-        { val: 0, date: '周日' },
-        { val: 1, date: '周一' },
-        { val: 2, date: '周二' },
-        { val: 3, date: '周三' },
-        { val: 4, date: '周四' },
-        { val: 5, date: '周五' },
-        { val: 6, date: '周六' },
-    ]
-},
-{
-    data: [
-        { val: 8, date: '08:00' },
-        { val: 9, date: '09:00' },
-        { val: 10, date: '10:00' },
-        { val: 11, date: '11:00' },
-        { val: 12, date: '12:00' },
-        { val: 13, date: '13:00' },
-        { val: 14, date: '14:00' }
-    ]
-}];
-
-
-
-
-const Opt: Option = {
-    id: 'mobileId',
-    wheels,
-    trigger: '#btna',
-    keyMap,
-    cancelBtnText: 'cancel',
-    confirmBtnText: 'ensure',
-    onConfirm: function (data) {
-        console.log(data);
-    },
-    onCancel: function (data) {
-        console.log(data);
-    },
-    transitionEnd: function (data) {
-        console.log(data);
-    },
-    onShow: function (e) {},
-    onHide: function (e) {
-        console.log(e);
-    },
-    onChange: function (data) {
-        console.log(data);
-    },
-    title: 'json类型',
-    style: {
-        wrap: {
-            color: '#444',
-        },
-        mask: {
-            height: '50em',
-        },
-        
-    },
+if (window.Promise === undefined) {
+	throw new Error('Promise pollyfill not found.');
 }
 
-const test = new Picker(Opt);
+const htmlFactory = {
+    createDom,
+    removeDom,
+    combineDomByClass,
+    inlineStyle: createInlineStyles
+}
 
+const tools = {
+    isPC,
+    isObject,
+    countDown,
+    dormancyFor,
+    fixpx,
+    setEmBase
+}
 
-export { Loading, Picker, validate, Message, Modal };
+const regionsDataFormat = {
+    formatWheelsData,
+    getPositionByDefaultValue
+}
+
+const webAnimation = {
+    onceTransitionEnd,
+	onceAnimationEnd
+}
+
+export {
+	AddressModal,
+	ResultModal,
+	Msg,
+	NoticeModal,
+	Loading,
+	Picker,
+	validate,
+	Message,
+	Modal,
+	htmlFactory,
+	tools,
+	regionsDataFormat,
+	webAnimation
+};
