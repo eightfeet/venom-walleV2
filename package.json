@@ -17,7 +17,7 @@
     "@babel/runtime": "^7.1.2",
     "@eightfeet/loading": "^2.0.1",
     "@eightfeet/message": "^2.0.5",
-    "@eightfeet/modal": "^2.2.2",
+    "@eightfeet/modal": "^2.2.4",
     "@eightfeet/picker": "^1.0.9",
     "core-js": "^3.2.1",
     "css-in-js-utils": "^3.1.0",

@@ -5,7 +5,7 @@ import validate from "~/validate";
 import AddressPicker from "./../AddressSelecter";
 import { dormancyFor, countDown } from "~/utils/tools";
 import s from "./address.scss";
-import { AddressModalParameters, cardIdRequestEnum } from './Address';
+import { AddressModalParameters } from './Address';
 
 
 /**
@@ -566,19 +566,19 @@ class AddressModal extends Modal {
     if (verificationvodeDom) {
       data.verificationvode = verificationvode;
       validateData = {
-        VRequire_verificationvode: [verificationvode, "请输入正确验证码", cardIdRequestEnum.neveCheck],
+        VRequire_verificationvode: [verificationvode, "请输入正确验证码", 4],
         ...validateData,
       };
     }
 
-    if (this.cardIdRequest === cardIdRequestEnum.checkCardId) {
+    if (this.cardIdRequest === 2) {
       validateData = {
         VIdCard: idcode,
         ...validateData,
       };
     }
 
-    if (this.cardIdRequest === cardIdRequestEnum.checkInputCardId) {
+    if (this.cardIdRequest === 3) {
       if (idcode) {
         validateData = {
           VIdCard: idcode,

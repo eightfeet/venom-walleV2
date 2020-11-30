@@ -12,7 +12,7 @@
         "types": ["node"],
         "typeRoots": ["node_modules/@types", "src/types"],
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
     },
     "plugins": [
       { "transform": "typescript-transform-paths" },
