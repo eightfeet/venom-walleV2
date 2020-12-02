@@ -1,7 +1,6 @@
-import Modal, { createInlineStyles as inlineStyle } from "@eightfeet/modal";
+import Modal, { createInlineStyles as inlineStyle, ModalParameters } from "@eightfeet/modal";
 import s from "./result.scss";
 import { ResultModalParameters } from './ResultModal'
-
 class ResultModal extends Modal {
   modalTitle: any;
   submitText: any;
@@ -42,8 +41,9 @@ class ResultModal extends Modal {
     submitText,
     onEnsure,
     submitAddressText,
+    animation
   }: ResultModalParameters) {
-    super({ style: other, onCancel, parentId: outerFrameId });
+    super({ style: other, onCancel, parentId: outerFrameId, animation });
 
     this.modalTitle = modalTitle || null;
     this.submitText = submitText || "确定";

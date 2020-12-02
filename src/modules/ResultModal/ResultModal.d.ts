@@ -1,4 +1,4 @@
-import { ModalStyle } from "@eightfeet/modal";
+import { ModalParameters, ModalStyle } from "@eightfeet/modal";
 import * as CSS from "csstype";
 import { PrizesItem } from "~/types/prizes";
 
@@ -19,7 +19,7 @@ export interface ResultModalStyle extends ModalStyle {
   footer?: CSS.Properties;
 }
 
-export interface ResultModalParameters {
+export interface ResultModalParameters extends ModalParameters {
   style?: ResultModalStyle;
   /** 标题 */
   modalTitle: string;
