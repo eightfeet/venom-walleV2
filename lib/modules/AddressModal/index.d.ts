@@ -1,4 +1,5 @@
 import Modal from "@eightfeet/modal";
+import { AddressModalParameters } from './Address';
 /**
  *
  * 地址弹窗
@@ -11,26 +12,7 @@ declare class AddressModal extends Modal {
     receiverInfo: any;
     cardIdRequest: any;
     AddressPicker: any;
-    formStyle: {
-        content: any;
-        contentTop: any;
-        contentBottom: any;
-        submit: any;
-        header: any;
-        article: any;
-        footer: any;
-        close: any;
-        row: any;
-        subTitle: any;
-        label: any;
-        input: any;
-        textarea: any;
-        codeButton: any;
-        codeButtonDisable: any;
-        notice: any;
-        noticeIcon: any;
-        noticeArrow: any;
-    };
+    formStyle: any;
     showNotebox: boolean;
     checkVerificationCode: any;
     regionsTheme: any;
@@ -42,36 +24,7 @@ declare class AddressModal extends Modal {
      * @param {*} config
      * @memberof AddressModal
      */
-    constructor({ AddressModalTheme: { content, contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, }: {
-        AddressModalTheme: {
-            [x: string]: any;
-            content: any;
-            contentTop: any;
-            contentBottom: any;
-            submit: any;
-            header: any;
-            article: any;
-            footer: any;
-            close: any;
-            regions: any;
-            row: any;
-            subTitle: any;
-            label: any;
-            input: any;
-            textarea: any;
-            codeButton: any;
-            codeButtonDisable: any;
-            notice: any;
-            noticeIcon: any;
-            noticeArrow: any;
-        };
-        MessageTheme: any;
-        playerPhone: any;
-        outerFrameId: any;
-        receiverInfo: any;
-        cardIdRequest: any;
-        checkVerificationCode: any;
-    });
+    constructor({ AddressModalTheme: { content, contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, }: AddressModalParameters);
     /**
      *
      * @param { Object } params

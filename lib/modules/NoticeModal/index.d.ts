@@ -1,4 +1,5 @@
 import Modal from "@eightfeet/modal";
+import { NoticeModalStyle } from "./NoticeModal";
 declare class NoticeModal extends Modal {
     theme: {
         contentTop: any;
@@ -9,16 +10,7 @@ declare class NoticeModal extends Modal {
         article: any;
         footer: any;
     };
-    constructor({ contentTop, contentBottom, submit, header, article, footer, modalTitle, ...other }: {
-        [x: string]: any;
-        contentTop: any;
-        contentBottom: any;
-        submit: any;
-        header: any;
-        article: any;
-        footer: any;
-        modalTitle: any;
-    }, outerFrameId: any);
+    constructor({ contentTop, contentBottom, submit, header, article, footer, modalTitle, ...other }: NoticeModalStyle, outerFrameId: string);
     showModal: ({ title, content, footer }: {
         title: any;
         content: any;
