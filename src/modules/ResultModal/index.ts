@@ -19,6 +19,7 @@ class ResultModal extends Modal {
     header: any;
     article: any;
     footer: any;
+    contentWrap: any;
   };
   constructor({
     style: {
@@ -33,6 +34,7 @@ class ResultModal extends Modal {
       header,
       article,
       footer,
+      contentWrap,
       ...other
     },
     modalTitle,
@@ -51,6 +53,7 @@ class ResultModal extends Modal {
     this.onEnsure = onEnsure || null;
 
     this.theme = {
+      contentWrap,
       modalTitle: other.modalTitle,
       prizeAlias,
       prizeName,
@@ -71,6 +74,7 @@ class ResultModal extends Modal {
     const { id } = this.state;
     let modalElement = document.getElementById(id);
     const {
+      contentWrap,
       modalTitle,
       prizeAlias,
       prizeName,
@@ -84,7 +88,7 @@ class ResultModal extends Modal {
       article,
       footer,
     } = this.theme;
-
+    const contentWrapStyle = inlineStyle(contentWrap);
     const modalTitleStyle = inlineStyle(modalTitle);
     const prizeAliasStyle = inlineStyle(prizeAlias);
     const prizeNameStyle = inlineStyle(prizeName);
@@ -97,7 +101,6 @@ class ResultModal extends Modal {
     const headerStyle = inlineStyle(header);
     const articleStyle = inlineStyle(article);
     const footerStyle = inlineStyle(footer);
-    console.log('modalTitleStyle', modalTitleStyle)
     const gamedom = `
 			${
         contentBottomStyle
@@ -145,7 +148,7 @@ class ResultModal extends Modal {
     if (!modalElement) {
       return this.create(
         {
-          article: `<div class="${s.mainid}">
+          article: `<div class="${s.mainid}" style="${contentWrapStyle || ''}">
 					${gamedom}
 				</div>`,
         },

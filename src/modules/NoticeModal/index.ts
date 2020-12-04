@@ -11,6 +11,7 @@ class NoticeModal extends Modal {
     header: any;
     article: any;
     footer: any;
+    contentWrap: any;
   };
   constructor(
     {
@@ -21,12 +22,14 @@ class NoticeModal extends Modal {
       article,
       footer,
       modalTitle,
+      contentWrap,
       ...other
     }: NoticeModalStyle,
     outerFrameId: string
   ) {
     super({ style: other, parentId: outerFrameId });
     this.theme = {
+      contentWrap,
       contentTop,
       contentBottom,
       submit,
@@ -49,6 +52,7 @@ class NoticeModal extends Modal {
 
     let modalElement = document.getElementById(id);
     const {
+      contentWrap,
       contentTop,
       contentBottom,
       submit,
@@ -56,6 +60,7 @@ class NoticeModal extends Modal {
       header,
       article,
     } = this.theme;
+    const contentWrapStyle = inlineStyle(contentWrap);
     const contentTopStyle = inlineStyle(contentTop);
     const contentBottomStyle = inlineStyle(contentBottom);
     const modalTitleStyle = inlineStyle(modalTitle);
@@ -100,7 +105,7 @@ class NoticeModal extends Modal {
     if (!modalElement) {
       return this.create(
         {
-          article: `<div class="${s.mainid} successmodal__content">
+          article: `<div class="${s.mainid} successmodal__content" style="${contentWrapStyle || ''}">
 					${gamedom}
 				</div>`,
         },
