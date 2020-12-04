@@ -9,8 +9,9 @@ declare class NoticeModal extends Modal {
         header: any;
         article: any;
         footer: any;
+        contentWrap: any;
     };
-    constructor({ contentTop, contentBottom, submit, header, article, footer, modalTitle, ...other }: NoticeModalStyle, outerFrameId: string);
+    constructor({ contentTop, contentBottom, submit, header, article, footer, modalTitle, contentWrap, ...other }: NoticeModalStyle, outerFrameId: string);
     showModal: ({ title, content, footer }: {
         title: any;
         content: any;

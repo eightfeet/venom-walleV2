@@ -18,8 +18,9 @@ declare class ResultModal extends Modal {
         header: any;
         article: any;
         footer: any;
+        contentWrap: any;
     };
-    constructor({ style: { prizeAlias, prizeName, awardMsg, prizeImg, memo, contentTop, contentBottom, submit, header, article, footer, ...other }, modalTitle, outerFrameId, onCancel, submitText, onEnsure, submitAddressText, }: ResultModalParameters);
+    constructor({ style: { prizeAlias, prizeName, awardMsg, prizeImg, memo, contentTop, contentBottom, submit, header, article, footer, contentWrap, ...other }, modalTitle, outerFrameId, onCancel, submitText, onEnsure, submitAddressText, animation }: ResultModalParameters);
     showModal: (prize: any) => Promise<unknown>;
     hideModal: () => Promise<unknown>;
 }

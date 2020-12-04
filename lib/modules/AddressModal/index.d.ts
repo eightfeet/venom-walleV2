@@ -1,4 +1,4 @@
-import Modal from "@eightfeet/modal";
+import Modal from '@eightfeet/modal';
 import { AddressModalParameters } from './Address';
 /**
  *
@@ -24,7 +24,7 @@ declare class AddressModal extends Modal {
      * @param {*} config
      * @memberof AddressModal
      */
-    constructor({ AddressModalTheme: { content, contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, }: AddressModalParameters);
+    constructor({ AddressModalTheme: { contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, }: AddressModalParameters);
     /**
      *
      * @param { Object } params
