@@ -62,25 +62,25 @@
                 0% {
                     background-position-x: 200px;
                 }
-                5% {
+                2% {
                     background-position-x: 0;
                 }
-                10% {
+                4% {
                     background-position-x: -200px;
                 }
-                15% {
+                6% {
                     background-position-x: -400px;
                 }
-                20% {
+                8% {
                     background-position-x: -400px;
                 }
-                25% {
+                10% {
                     background-position-x: -600px;
                 }
-                30% {
+                12% {
                     background-position-x: -800px;
                 }
-                35% {
+                14% {
                     background-position-x: -1000px;
                 }
                 100% {
@@ -222,7 +222,7 @@
         // 消息弹窗
         var notice = new NoticeModal(window.themedata.NoticeModalTheme, 'wrap');
 
-        // btnc.onclick = function () {
+        btnc.onclick = function () {
         success
             .showModal({
                 prizeName: '蛋白粉',
@@ -235,6 +235,19 @@
             .then(function () {
                 console.log('success Go!');
             });
-        // };
+        };
+
+        success
+            .showModal({
+                prizeName: '蛋白粉',
+                prizeAlias: '别名',
+                awardMsg: '获奖感言',
+                prizeImg:
+                    'http://by-health-portal-2019.oss-cn-shenzhen.aliyuncs.com/product/album/AA010102/AA010102.jpg',
+                memo: '奖品备注',
+            })
+            .then(function () {
+                console.log('success Go!');
+            });
     </script>
 </html>

@@ -400,7 +400,7 @@ window.themedata = {
                 width: '8.928em',
                 height: '8.928em',
                 backgroundImage:
-                    'url(https://upload-yyj.by-health.com/upload/images/1202162926131.png)',
+                    'url(https://upload-yyj.by-health.com/upload/images/1204140809557.png)',
                 boxShadow:
                     '0.40190625em 0.595875em 0.595875em 0px rgba(249, 105, 70, 0.31)',
                 'z-index': '150 !important',
@@ -437,9 +437,39 @@ window.themedata = {
                 backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1204110321405.png)',
                 backgroundRepeat: 'no-repeat',
                 zIndex: '200',
-                animation: 'pulse 1s steps(1, end) 2s infinite',
-                backgroundPositionX: '-800px'
+                animation: 'pulse 3s steps(1, end) 0.5s infinite',
+                backgroundPositionX: '-1000px',
+                transform: 'scale(.4)',
+                transformOrigin: 'left top',
+                left: '-3em',
+                top: '1em',
+                opacity: '0.5'
             },
+            {
+                width: '200px',
+                height: '200px',
+                backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1204110321405.png)',
+                backgroundRepeat: 'no-repeat',
+                zIndex: '200',
+                animation: 'pulse 3s steps(1, end) 1s infinite',
+                backgroundPositionX: '-1000px',
+                transform: 'scale(.5)',
+                transformOrigin: 'right bottom',
+                right: '-4em',
+                top: 'auto',
+                bottom: '6em'
+            },
+            {
+                width: '17.056em',
+                height: '6.88em',
+                backgroundImage:
+                    'url(https://upload-yyj.by-health.com/upload/images/1204142656798.png)',
+                'z-index': '151 !important',
+                backgroundSize: '100% 100%',
+                marginLeft: '-4.464em',
+                left: '42%',
+                top: '6em',
+            }
         ],
     },
     AddressModalTheme: {
