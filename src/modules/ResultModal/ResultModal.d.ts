@@ -17,6 +17,7 @@ export interface ResultModalStyle extends ModalStyle {
   header?: CSS.Properties;
   article?: CSS.Properties;
   footer?: CSS.Properties;
+  modalTitle?: CSS.Properties;
 }
 
 export interface ResultModalParameters extends ModalParameters {

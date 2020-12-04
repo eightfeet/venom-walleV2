@@ -51,7 +51,7 @@ class ResultModal extends Modal {
     this.onEnsure = onEnsure || null;
 
     this.theme = {
-      modalTitle,
+      modalTitle: other.modalTitle,
       prizeAlias,
       prizeName,
       awardMsg,
@@ -97,6 +97,7 @@ class ResultModal extends Modal {
     const headerStyle = inlineStyle(header);
     const articleStyle = inlineStyle(article);
     const footerStyle = inlineStyle(footer);
+    console.log('modalTitleStyle', modalTitleStyle)
     const gamedom = `
 			${
         contentBottomStyle
