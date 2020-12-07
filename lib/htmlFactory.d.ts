@@ -4,7 +4,7 @@
  * @param {HTMLElement} dom
  * @returns
  */
-export declare function setEmBase(dom: any, emBase: any): void;
+export declare function setEmBase(dom: HTMLElement, emBase: number): void;
 /**
  * dom Hooks 挂载模板到document的指定目标节点，当目标节点不存在时创建一个并设置基准fontSize
  *
@@ -14,7 +14,7 @@ export declare function setEmBase(dom: any, emBase: any): void;
  * @param {Number} traget 基准大小
  * @returns
  */
-export declare function createDom(dom: any, target: any, parentId: any, emBase: any): Promise<unknown>;
+export declare function createDom(dom: string, target: string, parentId: string, emBase: number): Promise<unknown>;
 /**
  * 移除指定id的dom及其子节点
  *
@@ -30,4 +30,6 @@ export declare function removeDom(target: string): Promise<unknown>;
  * @param {*} classes
  * @returns
  */
-export declare function combineDomByClass(dom: any, classes: any): Promise<unknown>;
+export declare function combineDomByClass(dom: any, classes: {
+    [x: string]: any;
+}): Promise<unknown>;
