@@ -67,44 +67,6 @@ fixpx
 .addressBox .formBox {
 	width: 90%;
 	margin: 0 auto;
-	
-	.note {
-		background-image: url(./icona.png);
-		background-repeat: no-repeat;
-		background-size: 60%;
-		background-position: center;
-		position: absolute;
-		display: block;
-		right: 0.4em;
-		top: 0.2em;
-		width: 1.9em;
-		height: 1.9em;
-	}
-
-	.noteBox {
-		width: 135%;
-		position: absolute;
-		right: -0.3em;
-		top: 2.5em;
-		font-size: 0.8em;
-		padding: 0.5em 0.8em;
-		background-color: #fff;
-		box-shadow: 0 0 fixpx(40) rgba(221,221,221,1);
-		border-radius: fixpx(10);
-		color: red;
-		line-height: 1.4em;
-		z-index: 1;
-	}
-
-	.arrowup {
-		width: 0;
-		position: absolute;
-		height: 0;
-		border: fixpx(20) solid transparent;
-		border-bottom: fixpx(20) solid #fff;
-		right: 0.8em;
-		top: -1.2em;
-	}
 
     .submit{
         background-color: #ccc;
@@ -150,27 +112,6 @@ fixpx
 		margin-top: 1em;
         margin-bottom: .6em;
 	}
-
-	.label {
-		width: 30%;
-		text-align: right;
-		float: left;
-		height: fixpx(38);
-		line-height: 2.4em;
-		font-size: 0.8em;
-		color: $ui-color;
-		margin-bottom: 1em;
-	}
-	.inp {
-		line-height: 2.3em;
-		width: 70%;
-		text-align: left;
-		float: left;
-		color: $ui-color;
-		font-size: 0.8em;
-		margin-bottom: 0.4em;
-		position: relative;
-	}
 	
 	.inphalf {
 		line-height: 2.3em;
@@ -212,11 +153,6 @@ fixpx
 	.inphalfspace {
 		margin-left: 2%;
 	}
-    
-    input, .trigger {
-        height: fixpx(60);
-        color: $ui-color;
-    }
 
 	input,
 	textarea,
@@ -247,6 +183,85 @@ fixpx
 	.button{
 		text-align: center;
 		padding-bottom: 1em;
+	}
+
+	.item {
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+
+	.label {
+		width: 25%;
+		text-align: right;
+		height: fixpx(38);
+		font-size: 0.8em;
+		color: $ui-color;
+		display: block;
+		flex-shrink: 0;
+	}
+	.trigger, .inp {
+		line-height: 2.3em;
+		text-align: left;
+		color: $ui-color;
+		font-size: 0.8em;
+		margin-bottom: 0.4em;
+		position: relative;
+	}
+
+	.noteBox {
+		position: absolute;
+		top: 2.5em;
+		font-size: 0.8em;
+		padding: 0.5em 0.8em;
+		background-color: #fff;
+		box-shadow: 0 0 fixpx(40) rgba(221,221,221,1);
+		border-radius: fixpx(10);
+		color: red;
+		line-height: 1.4em;
+		z-index: 1;
+
+		&::before {
+			width: 0;
+			content: "\A0";
+			position: absolute;
+			height: 0;
+			border: fixpx(20) solid transparent;
+			border-bottom: fixpx(20) solid #fff;
+			right: 0.8em;
+			top: -1.2em;
+		}
+	}
+	.note {
+		background-repeat: no-repeat;
+		background-size: 60%;
+		background-position: center;
+		position: absolute;
+		display: block;
+		right: 1em;
+		top: 50%;
+		width: 2em;
+		height: 2em;
+		margin-top: -1em;
+		text-align: center;
+		line-height: 2em;
+		font-size: 0.7em;
+		color: rgb(255, 196, 0);
+		svg {
+			display: block;
+			width: 80%;
+			margin: 0 auto;
+			fill: currentColor;
+		}
+	}
+	.code {
+		width: 30%;
+		flex-shrink: 0;
+		margin-left: 2%;
+		font-size: 0.8em;
+		button {
+			vertical-align: middle;
+		}
 	}
 }
 

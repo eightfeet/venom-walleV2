@@ -81,9 +81,13 @@ export interface AddressModalParameters extends  ModalParameters{
 }
 
 export enum cardIdRequestEnum {
-  hideCardId = 1,
-  checkCardId = 2,
-  checkInputCardId = 3,
-  neveCheck = 4
+  /** 隐藏身份证 */
+  HideCardId = 1,
+  /** 验证身份证 */
+  CheckCardId = 2,
+  /** 验证输入的身份证 */
+  CheckInputCardId = 3,
+  /** 不验证 */
+  NeveCheck = 4
 }
 
