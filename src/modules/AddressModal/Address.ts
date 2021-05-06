@@ -1,4 +1,4 @@
-import { ModalStyle } from "@eightfeet/modal";
+import { ModalStyle, ModalParameters } from "@eightfeet/modal";
 import * as CSS from "csstype";
 import { MessageStyle } from "../Msg";
 
@@ -24,7 +24,7 @@ export interface AddressModalThemeType extends ModalStyle {
   noticeArrow: CSS.Properties;
 }
 
-export interface AddressModalParameters {
+export interface AddressModalParameters extends  ModalParameters{
   /**
    * 地址弹窗皮肤
    */
