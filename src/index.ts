@@ -1,5 +1,5 @@
 if (window.Promise === undefined) {
-    throw new Error('Promise pollyfill not found.');
+	throw new Error('Promise pollyfill not found.');
 }
 // parseFloat polyfill
 Number.parseFloat = Number.parseFloat || parseFloat;
@@ -7,10 +7,10 @@ Number.parseFloat = Number.parseFloat || parseFloat;
 Number.parseInt = Number.parseInt || parseInt;
 // isFinite Polyfill
 Number.isFinite =
-    Number.isFinite ||
-    function (value) {
-        return typeof value === 'number' && isFinite(value);
-    };
+	Number.isFinite ||
+	function (value) {
+		return typeof value === 'number' && isFinite(value);
+	};
 
 
 import AddressModal from './modules/AddressModal';
@@ -35,30 +35,30 @@ if (window.Promise === undefined) {
 }
 
 const htmlFactory = {
-    createDom,
-    removeDom,
-    combineDomByClass,
-    inlineStyle: createInlineStyles
-}
+	createDom,
+	removeDom,
+	combineDomByClass,
+	inlineStyle: createInlineStyles
+};
 
 const tools = {
-    isPC,
-    isObject,
-    countDown,
-    dormancyFor,
-    fixpx,
-    setEmBase
-}
+	isPC,
+	isObject,
+	countDown,
+	dormancyFor,
+	fixpx,
+	setEmBase
+};
 
 const regionsDataFormat = {
-    formatWheelsData,
-    getPositionByDefaultValue
-}
+	formatWheelsData,
+	getPositionByDefaultValue
+};
 
 const webAnimation = {
-    onceTransitionEnd,
+	onceTransitionEnd,
 	onceAnimationEnd
-}
+};
 
 export {
 	AddressModal,

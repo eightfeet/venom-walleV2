@@ -207,22 +207,20 @@ class AddressModal extends Modal {
 			${
 		this.playerPhone
 			? `
-				<div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
-					<label class="${s.label}" ${labelStyle ? `style="${labelStyle}"` : ""}>手机：</label>
-					<div class="${s.inp}" style="line-height:2.4em; color: inherit;">
-						${this.playerPhone}
-					</div>
+				<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+					<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>手机：</label>
+					<div class="${s.inp}" style="line-height:2.4em; color: inherit;">${this.playerPhone}</div>
 				</div>
 				`
 			: ""
 	  }
 			${
-		this.cardIdRequest === cardIdRequestEnum.HideCardId
-			? ""
-			: `
-					<div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
-						<label class="${s.label}" ${labelStyle ? `style="${labelStyle}"` : ""}>身份证：</label>
-						<input placeholder="身份证号码" maxlength="18" class="${s.idcode} ${s.inpelement}" ${inputStyle ? `style="${inputStyle}"` : ""} type="text" />
+				this.cardIdRequest === cardIdRequestEnum.HideCardId
+					? ""
+					: `
+					<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+						<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>身份证：</label>
+						<input placeholder="身份证号码" maxlength="18" class="${s.idcode} ${s.inpelement} ${id}_input" ${inputStyle ? `style="${inputStyle}"` : ""} type="text" />
 						<span class="${s.note} address__note" ${noticeIconStyle ? `style="${noticeIconStyle}"` : ""}>
 							${info}
 						</span>
@@ -231,100 +229,56 @@ class AddressModal extends Modal {
 						</div>
 					</div>
 					`
-	  }
+			}
 			${
-		this.playerPhone && typeof this.checkVerificationCode === "function"
-			? `<div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
+				this.playerPhone && typeof this.checkVerificationCode === "function"
+					? `<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
 						<label class="${s.label}" ${labelStyle ? `style="${labelStyle}"` : ""}>验证码：</label>
-						<input placeholder="手机验证码" class="${s.verificationvode} ${s.inpelement}" type="text" ${inputStyle ? `style="${inputStyle}"` : ""} />
-						<div class="${s.code} ${
-				s.inphalfspace
-			} address__verification__code__buttons">
-							<button class="${s.btncode} address__check__phone" ${
-				codeButtonStyle ? `style="${codeButtonStyle}"` : ""
-			}>获取验证码</button>
-							<button class="${s.btncodedisable} address__check__phone__disable" style="${
-				codeButtonDisableStyle ? codeButtonDisableStyle : ""
-			}; display:none"></button>
+						<input placeholder="手机验证码" class="${s.verificationvode} ${s.inpelement} ${id}_input" type="text" ${inputStyle ? `style="${inputStyle}"` : ""} />
+						<div class="${s.code} ${s.inphalfspace} address__verification__code__buttons">
+							<button class="${s.btncode} address__check__phone" ${codeButtonStyle ? `style="${codeButtonStyle}"` : ""}>获取验证码</button>
+								<button class="${s.btncodedisable} address__check__phone__disable" style="${codeButtonDisableStyle ? codeButtonDisableStyle : ""}; display:none"></button>
+							</div>
 						</div>
-					</div>
-					`
-			: ""
-	  }
+						`
+					: ""
+			}
 		`;
 
 	  if (!modalElement) {
 		  return this.create(
 			  {
-				  article: `<div class="${s.addressBox} address__content">
-					${
-			contentTopStyle
-				? `<div class="${s.top}" style="${contentTopStyle}">&nbsp;</div>`
-				: ""
-		  }
-					${
-			contentBottomStyle
-				? `<div class="${s.bottom}" style="${contentBottomStyle}">&nbsp;</div>`
-				: ""
-		  }
-					<div class="${s.cancel} address_close" ${
-			  closeStyle ? `style="${closeStyle}"` : ""
-		  }>&nbsp;</div>
-					<div class="${s.formBox}  address__formbox">
-						<h3 ${headerStyle ? `style="${headerStyle}"` : ""}>填写地址</h3>
-						<div ${articleStyle ? `style="${articleStyle}"` : ""}>
-							<div class="address__top">
-								${playerDom}
-							</div>
-							<h4 ${subTitleStyle ? `style="${subTitleStyle}"` : ""}>收货地址(必填)</h4>
+				  article: `
+				  <div class="${s.addressBox} address__content">
+				  	${contentTopStyle ? `<div class="${s.top} ${id}_top" style="${contentTopStyle}">&nbsp;</div>` : "" }
+					${contentBottomStyle ? `<div class="${s.bottom} ${id}_bottom" style="${contentBottomStyle}">&nbsp;</div>` : "" }
+					<div class="${s.cancel} address_close ${id}_close" ${closeStyle ? `style="${closeStyle}"` : ""}>&nbsp;</div>
+					<div class="${s.formBox}  address__formbox ${id}_formbox">
+						<h3 ${headerStyle ? `style="${headerStyle}"` : ""} class="${id}_header">填写地址</h3>
+						<div ${articleStyle ? `style="${articleStyle}"` : ""}  class="${id}_article">
+							<div class="address__top ${id}_phone">${playerDom}</div>
+							<h4 ${subTitleStyle ? `style="${subTitleStyle}"` : ""}  class="${id}_subtitle">收货地址(必填)</h4>
 							<div>
-								<div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
-									<div class="${s.label}" ${
-			  labelStyle ? `style="${labelStyle}"` : ""
-		  }>收货人：</div>
-									<div class="${s.inp}">
-										<input maxlength="30" placeholder="收货人姓名" class="${s.receiver} ${
-			  s.inpelement
-		  }" type="text" ${inputStyle ? `style="${inputStyle}"` : ""} />
-									</div>
-								</div><div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
-									<div class="${s.label}" ${
-			  labelStyle ? `style="${labelStyle}"` : ""
-		  }>收货电话：</div>
-									<div class="${s.inp}">
-										<input placeholder="收货人手机" class="${s.phone} ${
-			  s.inpelement
-		  }" type="tel" maxlength="11" ${
-			  inputStyle ? `style="${inputStyle}"` : ""
-		  } />
-									</div>
-								</div><div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
-									<div class="${s.label}" ${
-			  labelStyle ? `style="${labelStyle}"` : ""
-		  }>地址：</div>
-									<div class="${s.inp}">
-										<button id="${this.addressTrigger}" class="${
-			  s.trigger
-		  } address__picker__button" ${
-			  inputStyle ? `style="${inputStyle}"` : ""
-		  } >请选择收货省市区/县</button>
-									</div>
-								</div><div class="${s.item}" ${rowStyle ? `style="${rowStyle}"` : ""}>
-									<div class="${s.label}" ${
-			  labelStyle ? `style="${labelStyle}"` : ""
-		  }>&nbsp;</div>
-									<div class="${s.inp}">
-										<textarea maxlength="250"  placeholder="详细地址" class="${s.inpelement} ${
-			  s.address
-		  }" ${textareaStyle ? `style="${textareaStyle}"` : ""} ></textarea>
-									</div>
+								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>收货人：</label>
+									<input maxlength="30" placeholder="收货人姓名" class="${s.receiver} ${s.inpelement} ${id}_input" type="text" ${inputStyle ? `style="${inputStyle}"` : ""} />
+								</div>
+								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>收货电话：</label>
+									<input placeholder="收货人手机" class="${s.phone} ${s.inpelement} ${id}_input" type="tel" maxlength="11" ${inputStyle ? `style="${inputStyle}"` : ""} />
+								</div>
+								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>地址：</label>
+									<button id="${this.addressTrigger}" class="${s.trigger} address__picker__button ${id}_input" ${inputStyle ? `style="${inputStyle}"` : "" } >请选择收货省市区/县</button>
+								</div>
+								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>&nbsp;</label>
+									<textarea maxlength="250"  placeholder="详细地址" class="${s.inpelement} ${s.address} ${id}_textarea" ${textareaStyle ? `style="${textareaStyle}"` : ""} ></textarea>
 								</div>
 							</div>
 						</div>
-						<div class="${s.button}" ${footerStyle ? `style="${footerStyle}"` : ""}>
-							<button class="${s.submit} address_submit" ${
-			  submitStyle ? `style="${submitStyle}"` : ""
-		  }>确定</button>
+						<div class="${s.button} ${id}_footer" ${footerStyle ? `style="${footerStyle}"` : ""}>
+							<button class="${s.submit} address_submit ${id}_submit" ${submitStyle ? `style="${submitStyle}"` : ""}>确定</button>
 						</div>
 					</div>
 				</div>
