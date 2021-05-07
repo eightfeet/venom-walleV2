@@ -1,5 +1,5 @@
-import Modal from '@eightfeet/modal';
-import { AddressModalParameters } from './Address';
+import Modal from "@eightfeet/modal";
+import { AddressModalParameters } from "./Address";
 /**
  *
  * 地址弹窗
@@ -19,12 +19,13 @@ declare class AddressModal extends Modal {
     addressTrigger: string;
     readyFillBack: boolean;
     AddressPickerConfig: any;
+    id: string;
     /**
      * Creates an instance of AddressModal.
      * @param {*} config
      * @memberof AddressModal
      */
-    constructor({ AddressModalTheme: { contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, }: AddressModalParameters);
+    constructor({ AddressModalTheme: { contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, ...more }: AddressModalParameters);
     /**
      *
      * @param { Object } params

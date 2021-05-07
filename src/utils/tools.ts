@@ -6,7 +6,7 @@ export function fixpx(px: number) {
 
 /** 使休眠 */
 export function dormancyFor(time: number) {
-	return new Promise(resolve => window.setTimeout(()=>resolve(), time));
+	return new Promise<void>(resolve => window.setTimeout(()=>resolve(), time));
 }
 
 /** 倒计时 */

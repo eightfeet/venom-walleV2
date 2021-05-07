@@ -1,5 +1,5 @@
-import Modal from "@eightfeet/modal";
-import { NoticeModalStyle } from "./NoticeModal";
+import Modal from '@eightfeet/modal';
+import { NoticeModalStyle } from './NoticeModal';
 declare class NoticeModal extends Modal {
     theme: {
         contentTop: any;
@@ -16,7 +16,7 @@ declare class NoticeModal extends Modal {
         title: any;
         content: any;
         footer: any;
-    }, onCancel: any) => Promise<unknown>;
+    }, onCancel: any) => Promise<void>;
     hideModal: () => Promise<unknown>;
 }
 export default NoticeModal;

@@ -1,4 +1,4 @@
-import { ModalStyle } from "@eightfeet/modal";
+import { ModalStyle, ModalParameters } from "@eightfeet/modal";
 import * as CSS from "csstype";
 import { MessageStyle } from "../Msg";
 export interface AddressModalThemeType extends ModalStyle {
@@ -22,7 +22,7 @@ export interface AddressModalThemeType extends ModalStyle {
     noticeIcon: CSS.Properties;
     noticeArrow: CSS.Properties;
 }
-export interface AddressModalParameters {
+export interface AddressModalParameters extends ModalParameters {
     /**
      * 地址弹窗皮肤
      */
@@ -78,8 +78,12 @@ export interface AddressModalParameters {
     checkVerificationCode: () => Promise<any>;
 }
 export declare enum cardIdRequestEnum {
-    hideCardId = 1,
-    checkCardId = 2,
-    checkInputCardId = 3,
-    neveCheck = 4
+    /** 隐藏身份证 */
+    HideCardId = 1,
+    /** 验证身份证 */
+    CheckCardId = 2,
+    /** 验证输入的身份证 */
+    CheckInputCardId = 3,
+    /** 不验证 */
+    NeveCheck = 4
 }
