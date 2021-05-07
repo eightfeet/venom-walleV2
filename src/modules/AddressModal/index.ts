@@ -256,7 +256,7 @@ class AddressModal extends Modal {
 					<div class="${s.formBox}  address__formbox ${id}_formbox">
 						<h3 ${headerStyle ? `style="${headerStyle}"` : ""} class="${id}_header">填写地址</h3>
 						<div ${articleStyle ? `style="${articleStyle}"` : ""}  class="${id}_article">
-							<div class="address__top ${id}_phone">${playerDom}</div>
+							<div class="address__top ${id}_player">${playerDom}</div>
 							<h4 ${subTitleStyle ? `style="${subTitleStyle}"` : ""}  class="${id}_subtitle">收货地址(必填)</h4>
 							<div>
 								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>

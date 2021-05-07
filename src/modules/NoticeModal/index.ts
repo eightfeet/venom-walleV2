@@ -25,9 +25,10 @@ class NoticeModal extends Modal {
 			contentWrap,
 			...other
 		}: NoticeModalStyle,
-		outerFrameId: string
+		outerFrameId: string,
+		id?: string
 	) {
-		super({ style: other, parentId: outerFrameId });
+		super({ style: other, parentId: outerFrameId, id });
 		this.theme = {
 			contentWrap,
 			contentTop,

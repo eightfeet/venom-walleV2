@@ -43,9 +43,10 @@ class ResultModal extends Modal {
 		submitText,
 		onEnsure,
 		submitAddressText,
-		animation
+		animation,
+		...more
 	}: ResultModalParameters) {
-		super({ style: other, onCancel, parentId: outerFrameId, animation });
+		super({ style: other, onCancel, parentId: outerFrameId, animation, ...more });
 
 		this.modalTitle = modalTitle || null;
 		this.submitText = submitText || "确定";

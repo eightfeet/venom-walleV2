@@ -165,7 +165,7 @@
         ];
         // 收获地址模块
         var address = new AddressModal({
-            id:'dizhi',
+            id: '地址',
             AddressModalTheme: window.themedata.AddressModalTheme, // 弹窗皮肤
             outerFrameId: 'wrap', // 弹窗所属父级ID
             MessageTheme: window.themedata.MessageTheme,
@@ -191,6 +191,7 @@
 
         // 活动失败弹窗
         var falied = new ResultModal({
+            id: '失败',
             style: window.themedata.FailedModalTheme,
             // modalTitle: '很遗憾',
             onCancel: function () {
@@ -205,6 +206,7 @@
 
         // 活动获奖弹窗
         var success = new ResultModal({
+            id: '成功',
             style: window.themedata.SuccessModalTheme,
             modalTitle: '恭喜您，获得',
             onCancel: function () {
@@ -221,7 +223,7 @@
         });
 
         // 消息弹窗
-        var notice = new NoticeModal(window.themedata.NoticeModalTheme, 'wrap');
+        var notice = new NoticeModal(window.themedata.NoticeModalTheme, 'wrap', '消息');
 
         btnc.onclick = function () {
             success
