@@ -24,11 +24,18 @@ export interface AddressModalThemeType extends ModalStyle {
   noticeArrow: CSS.Properties;
 }
 
-export interface AddressModalParameters extends  ModalParameters{
+export interface AddressModalParameters extends ModalParameters {
   /**
    * 地址弹窗皮肤
    */
   AddressModalTheme: AddressModalThemeType;
+  /**
+   * AddressPickerConfig
+   */
+  AddressPickerConfig: {
+    regionsData?: any[];
+    [keys: string]: any;
+  };
   /**
    * Message皮肤
    */
@@ -48,27 +55,27 @@ export interface AddressModalParameters extends  ModalParameters{
     /**
      * 身份证号
      */
-    idCard: string,
+    idCard: string;
     /**
      * 收货人姓名
      */
-    receiverName: string,
+    receiverName: string;
     /**
      * 收货人电话
      */
-    receiverPhone: string,
+    receiverPhone: string;
     /**
      * 收货省市区id['15', '1513', '151315'],
      */
-    region: string[],
+    region: string[];
     /**
      * 收货省市区 ['广东省','广州市','天河区']
      */
-    regionName: string[],
+    regionName: string[];
     /**
      * 详细地址
      */
-    address: string,
+    address: string;
   };
   /**
    * 要求身份证
@@ -88,6 +95,5 @@ export enum cardIdRequestEnum {
   /** 验证输入的身份证 */
   CheckInputCardId = 3,
   /** 不验证 */
-  NeveCheck = 4
+  NeveCheck = 4,
 }
-

@@ -27,7 +27,10 @@ class AddressModal extends Modal {
   regionsTheme: any;
   addressTrigger: string;
   readyFillBack: boolean;
-  AddressPickerConfig: any;
+  AddressPickerConfig: {
+	regionsData?: any[];
+	[keys: string]: any
+  };
   id: string;
   /**
    * Creates an instance of AddressModal.
@@ -62,6 +65,7 @@ class AddressModal extends Modal {
 	  outerFrameId,
 	  receiverInfo,
 	  cardIdRequest,
+	  AddressPickerConfig,
 	  checkVerificationCode,
 	  ...more
   }: AddressModalParameters) {
@@ -107,7 +111,7 @@ class AddressModal extends Modal {
 		  window.Math.random() * 100
 	  )}`;
 	  this.readyFillBack = true;
-	  this.AddressPickerConfig = AddressPicker || {};
+	  this.AddressPickerConfig = AddressPickerConfig || {};
   }
 
   /**

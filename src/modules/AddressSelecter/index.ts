@@ -8,7 +8,7 @@ class AddressSelecter extends Picker {
 	constructor(config){
 		const operationData = {
 			title: '请选择省市区', // 设置标题
-			wheels: [{ data: regions }],
+			wheels: [{ data: config.regionsData || regions }],
 			keyMap: { display: 'value', value: 'id', childs: 'childs' },
 			onConfirm(data){
 				const id = [];
