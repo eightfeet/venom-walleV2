@@ -157,8 +157,8 @@ class ResultModal extends Modal {
 			).then(
 				() =>
 					new Promise((resolve) => {
-						modalElement = document.getElementById(id);
 						window.setTimeout(() => {
+							modalElement = document.getElementById(id);
 							const buttonNode: HTMLElement = modalElement.querySelector(`.${s.button}`);
 							buttonNode.onclick = () => {
 								this.hideModal();
