@@ -1,5 +1,6 @@
 import Modal, {
 	createInlineStyles as inlineStyle} from "@eightfeet/modal";
+import { Option } from '@eightfeet/picker';
 import Msg from "./../Msg";
 import { getIdDom } from "~/utils/htmlFactory";
 import validate from "~/validate";
@@ -27,10 +28,7 @@ class AddressModal extends Modal {
   regionsTheme: any;
   addressTrigger: string;
   readyFillBack: boolean;
-  AddressPickerConfig: {
-	regionsData?: any[];
-	[keys: string]: any
-  };
+  AddressPickerConfig: Option;
   id: string;
   /**
    * Creates an instance of AddressModal.
@@ -111,7 +109,7 @@ class AddressModal extends Modal {
 		  window.Math.random() * 100
 	  )}`;
 	  this.readyFillBack = true;
-	  this.AddressPickerConfig = AddressPickerConfig || {};
+	  this.AddressPickerConfig = AddressPickerConfig;
   }
 
   /**

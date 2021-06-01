@@ -52,3 +52,6 @@ declare module '*.svg' {
     const exports: string;
     export default exports;
 }
+
+
+
