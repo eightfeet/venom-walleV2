@@ -33,7 +33,7 @@ export interface AddressModalParameters extends ModalParameters {
   /**
    * AddressPickerConfig
    */
-  AddressPickerConfig: Option;
+  AddressPickerConfig?: Option;
   /**
    * Message皮肤
    */

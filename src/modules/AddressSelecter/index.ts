@@ -16,7 +16,6 @@ class AddressSelecter extends Picker {
 		};
 
 		operationData.onConfirm = (result) => {
-			console.log('data', result);
 			const id = [];
 			const name = [];
 			for (let index = 0; index < result.length; index++) {
