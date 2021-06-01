@@ -3,14 +3,13 @@ import { formatWheelsData } from '~/utils/regionsWheelsHelper';
 
 // 格式化数据源为AddressPicker的数据结构
 
-const regions = formatWheelsData((window as any).BY_HEALTH_REGIONS);
 
 class AddressSelecter extends Picker {
 	constructor(config: Option){
 
 		const operationData = {
 			title: '请选择省市区', // 设置标题
-			wheels: [{ data: regions }],
+			wheels: [{ data: formatWheelsData((window as any).BY_HEALTH_REGIONS) }],
 			keyMap: { display: 'value', value: 'id', childs: 'childs' },
 			...config
 		};
