@@ -1,4 +1,5 @@
 import { ModalStyle, ModalParameters } from "@eightfeet/modal";
+import { Option } from '@eightfeet/picker';
 import * as CSS from "csstype";
 import { MessageStyle } from "../Msg";
 export interface AddressModalThemeType extends ModalStyle {
@@ -27,6 +28,10 @@ export interface AddressModalParameters extends ModalParameters {
      * 地址弹窗皮肤
      */
     AddressModalTheme: AddressModalThemeType;
+    /**
+     * AddressPickerConfig
+     */
+    AddressPickerConfig: Option;
     /**
      * Message皮肤
      */

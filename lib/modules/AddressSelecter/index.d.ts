@@ -1,5 +1,5 @@
-import Picker from '@eightfeet/picker';
+import Picker, { Option } from '@eightfeet/picker';
 declare class AddressSelecter extends Picker {
-    constructor(config: any);
+    constructor(config: Option);
 }
 export default AddressSelecter;

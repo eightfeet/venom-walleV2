@@ -1,4 +1,5 @@
 import Modal from "@eightfeet/modal";
+import { Option } from '@eightfeet/picker';
 import { AddressModalParameters } from "./Address";
 /**
  *
@@ -18,14 +19,14 @@ declare class AddressModal extends Modal {
     regionsTheme: any;
     addressTrigger: string;
     readyFillBack: boolean;
-    AddressPickerConfig: any;
+    AddressPickerConfig: Option;
     id: string;
     /**
      * Creates an instance of AddressModal.
      * @param {*} config
      * @memberof AddressModal
      */
-    constructor({ AddressModalTheme: { contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, checkVerificationCode, ...more }: AddressModalParameters);
+    constructor({ AddressModalTheme: { contentTop, contentBottom, submit, header, article, footer, close, regions, row, subTitle, label, input, textarea, codeButton, codeButtonDisable, notice, noticeIcon, noticeArrow, ...other }, MessageTheme, playerPhone, outerFrameId, receiverInfo, cardIdRequest, AddressPickerConfig, checkVerificationCode, ...more }: AddressModalParameters);
     /**
      *
      * @param { Object } params
