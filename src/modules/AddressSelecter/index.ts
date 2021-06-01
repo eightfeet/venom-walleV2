@@ -1,4 +1,4 @@
-import Picker, { Option, Value } from '@eightfeet/picker';
+import Picker, { Option } from '@eightfeet/picker';
 import { formatWheelsData } from '~/utils/regionsWheelsHelper';
 
 // 格式化数据源为AddressPicker的数据结构
@@ -11,7 +11,7 @@ class AddressSelecter extends Picker {
 			title: '请选择省市区', // 设置标题
 			wheels: [{ data: regions }],
 			keyMap: { display: 'value', value: 'id', childs: 'childs' },
-			onConfirm(data: Value){
+			onConfirm(data){
 				const id = [];
 				const name = [];
 				for (let index = 0; index < data.length; index++) {
