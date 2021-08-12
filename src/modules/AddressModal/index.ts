@@ -8,7 +8,6 @@ import AddressPicker from "./../AddressSelecter";
 import { dormancyFor, countDown } from "~/utils/tools";
 import s from "./address.scss";
 import { AddressModalParameters, cardIdRequestEnum } from "./Address";
-import info from './infoNode';
 
 /**
  *
@@ -76,7 +75,7 @@ class AddressModal extends Modal {
 
 	  const stamp = new Date().getTime();
 
-	  this.Msg = new Msg(MessageTheme, outerFrameId);
+	  this.Msg = new Msg(MessageTheme);
 	  this.playerPhone = playerPhone;
 	  this.receiverInfo = receiverInfo || {};
 	  this.cardIdRequest = cardIdRequest || cardIdRequestEnum.HideCardId;
@@ -175,7 +174,7 @@ class AddressModal extends Modal {
 		  contentTop,
 		  contentBottom,
 		  header,
-		  article,
+		  main,
 		  footer,
 		  close,
 		  row,
@@ -184,8 +183,7 @@ class AddressModal extends Modal {
 		  textarea,
 		  codeButton,
 		  codeButtonDisable,
-		  notice,
-		  noticeIcon
+		  notice
 	  } = this.formStyle;
 
 	  const rowStyle = inlineStyle(row);
@@ -194,7 +192,7 @@ class AddressModal extends Modal {
 	  const inputStyle = inlineStyle(input);
 	  const closeStyle = inlineStyle(close);
 	  const headerStyle = inlineStyle(header);
-	  const articleStyle = inlineStyle(article);
+	  const mainStyle = inlineStyle(main);
 	  const footerStyle = inlineStyle(footer);
 	  const labelStyle = inlineStyle(label);
 	  const textareaStyle = inlineStyle(textarea);
@@ -202,16 +200,15 @@ class AddressModal extends Modal {
 	  const codeButtonStyle = inlineStyle(codeButton);
 	  const codeButtonDisableStyle = inlineStyle(codeButtonDisable);
 	  const noticeStyle = inlineStyle(notice);
-	  const noticeIconStyle = inlineStyle(noticeIcon);
 	  const subTitleStyle = inlineStyle(subTitle);
 
 	  const playerDom = `
 			${
 		this.playerPhone
 			? `
-				<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
+				<div class="${s.item} ${id}_row ${id}_player_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
 					<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>手机：</label>
-					<div class="${s.inp}" style="line-height:2.4em; color: inherit;">${this.playerPhone}</div>
+					<div class="${id}_playerphone" style="line-height:2.4em; color: inherit;">${this.playerPhone}</div>
 				</div>
 				`
 			: ""
@@ -223,10 +220,7 @@ class AddressModal extends Modal {
 					<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
 						<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>身份证：</label>
 						<input placeholder="身份证号码" maxlength="18" class="${s.idcode} ${s.inpelement} ${id}_input" ${inputStyle ? `style="${inputStyle}"` : ""} type="text" />
-						<span class="${s.note} address__note" ${noticeIconStyle ? `style="${noticeIconStyle}"` : ""}>
-							${info}
-						</span>
-						<div class="${s.noteBox}" style="display:none; ${noticeStyle}">
+						<div class="${s.noteBox} ${id}_tips" style="display:none; ${noticeStyle}">
 							根据国家税务总局相关规定，企业向消费者赠送礼品，需要依法缴纳个人所得税，因此请您配合提供真实身份信息，身份证信息将严格保管，仅用于纳税使用，感谢您的理解。
 						</div>
 					</div>
@@ -235,7 +229,7 @@ class AddressModal extends Modal {
 			${
 				this.playerPhone && typeof this.checkVerificationCode === "function"
 					? `<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
-						<label class="${s.label}" ${labelStyle ? `style="${labelStyle}"` : ""}>验证码：</label>
+						<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>验证码：</label>
 						<input placeholder="手机验证码" class="${s.verificationvode} ${s.inpelement} ${id}_input" type="text" ${inputStyle ? `style="${inputStyle}"` : ""} />
 						<div class="${s.code} ${s.inphalfspace} address__verification__code__buttons">
 							<button class="${s.btncode} address__check__phone" ${codeButtonStyle ? `style="${codeButtonStyle}"` : ""}>获取验证码</button>
@@ -251,14 +245,14 @@ class AddressModal extends Modal {
 		  return this.create(
 			  {
 				  article: `
-				  <div class="${s.addressBox} address__content">
+				  <div class="${s.addressBox} ${id}_addressbox">
 				  	${contentTopStyle ? `<div class="${s.top} ${id}_top" style="${contentTopStyle}">&nbsp;</div>` : "" }
 					${contentBottomStyle ? `<div class="${s.bottom} ${id}_bottom" style="${contentBottomStyle}">&nbsp;</div>` : "" }
 					<div class="${s.cancel} address_close ${id}_close" ${closeStyle ? `style="${closeStyle}"` : ""}>&nbsp;</div>
-					<div class="${s.formBox}  address__formbox ${id}_formbox">
+					<div class="${s.formBox}  ${id}_formbox">
 						<h3 ${headerStyle ? `style="${headerStyle}"` : ""} class="${id}_header">填写地址</h3>
-						<div ${articleStyle ? `style="${articleStyle}"` : ""}  class="${id}_article">
-							<div class="address__top ${id}_player">${playerDom}</div>
+						<div ${mainStyle ? `style="${mainStyle}"` : ""}  class="${id}_main">
+							<div class="${id}_player">${playerDom}</div>
 							<h4 ${subTitleStyle ? `style="${subTitleStyle}"` : ""}  class="${id}_subtitle">收货地址(必填)</h4>
 							<div>
 								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
@@ -297,7 +291,7 @@ class AddressModal extends Modal {
 			  .then(() => this.handleDom(submit, cancel, success));
 	  }
 
-	  modalElement.querySelector(".address__top").innerHTML = playerDom;
+	  modalElement.querySelector(`.${id}_player`).innerHTML = playerDom;
 	  return this.show()
 		  .then(() => {
 			  if (this.readyFillBack) {
@@ -314,7 +308,6 @@ class AddressModal extends Modal {
    * @memberof AddressModal
    */
   hideModal = () => {
-	  this.Msg.hideMsg();
 	  return this.hide(true);
   };
 
