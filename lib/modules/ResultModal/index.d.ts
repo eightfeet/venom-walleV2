@@ -22,6 +22,6 @@ declare class ResultModal extends Modal {
     };
     constructor({ style: { prizeAlias, prizeName, awardMsg, prizeImg, memo, contentTop, contentBottom, submit, header, article, footer, contentWrap, ...other }, modalTitle, outerFrameId, onCancel, submitText, onEnsure, submitAddressText, animation, ...more }: ResultModalParameters);
     showModal: (prize: any) => Promise<unknown>;
-    hideModal: () => Promise<unknown>;
+    hideModal: () => Promise<void>;
 }
 export default ResultModal;

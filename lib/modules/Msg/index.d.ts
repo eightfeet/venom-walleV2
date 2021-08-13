@@ -1,8 +1,11 @@
-import Message, { MessageParameters } from '@eightfeet/message';
-export declare type MessageStyle = MessageParameters['style'];
+import Message from '@eightfeet/message';
+import * as CSS from 'csstype';
+export declare type MessageStyle = {
+    wrap?: CSS.Properties;
+    main?: CSS.Properties;
+};
 declare class Msg extends Message {
-    constructor(MessageTheme: any, outerFrameId: any);
-    showMsg: (content: string) => Promise<any>;
-    hideMsg: () => void;
+    constructor(MessageTheme: any);
+    showMsg: (content: string) => Promise<void>;
 }
 export default Msg;

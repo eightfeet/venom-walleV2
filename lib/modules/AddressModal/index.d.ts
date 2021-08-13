@@ -50,7 +50,7 @@ declare class AddressModal extends Modal {
      * @returns
      * @memberof AddressModal
      */
-    hideModal: () => Promise<unknown>;
+    hideModal: () => Promise<void>;
     /**
      *
      * 操作弹窗Dom

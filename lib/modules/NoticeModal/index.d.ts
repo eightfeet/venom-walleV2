@@ -17,6 +17,6 @@ declare class NoticeModal extends Modal {
         content: any;
         footer: any;
     }, onCancel: any) => Promise<void>;
-    hideModal: () => Promise<unknown>;
+    hideModal: () => Promise<void>;
 }
 export default NoticeModal;
