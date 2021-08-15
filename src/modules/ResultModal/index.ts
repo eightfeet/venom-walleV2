@@ -1,4 +1,5 @@
 import Modal, { createInlineStyles as inlineStyle } from "@eightfeet/modal";
+import { PrizesItem } from "~/types/prizes";
 import s from "./result.scss";
 import { ResultModalParameters } from './ResultModal';
 class ResultModal extends Modal {
@@ -70,7 +71,7 @@ class ResultModal extends Modal {
 		};
 	}
 
-	showModal = (prize) => {
+	showModal = (prize: PrizesItem) => {
 		// state 来自父级
 		const { id } = this.state;
 		let modalElement = document.getElementById(id);
