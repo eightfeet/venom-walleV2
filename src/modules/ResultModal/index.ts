@@ -123,7 +123,7 @@ class ResultModal extends Modal {
 						: ""
 				}
 			</div>
-			<div ${articleStyle ? `style="${articleStyle}"` : ""} class="${id}_article">
+			<div ${articleStyle ? `style="${articleStyle}"` : ""} class="${id}_article_content">
 				<div ${prizeNameStyle ? `style="${prizeNameStyle}"` : ""}  class="${id}_prizename">${
 					prize.prizeName || ""
 				}</div>
