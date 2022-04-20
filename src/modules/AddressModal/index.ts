@@ -286,7 +286,7 @@ class AddressModal extends Modal {
 								</div>
 								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
 									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>&nbsp;</label>
-									<textarea maxlength="250"  placeholder="详细地址" class="${s.inpelement} ${s.address} ${id}_textarea" ${textareaStyle ? `style="${textareaStyle}"` : ""} ></textarea>
+									<textarea maxLength="250"  placeholder="详细地址" class="${s.inpelement} ${s.address} ${id}_textarea" ${textareaStyle ? `style="${textareaStyle}"` : ""} ></textarea>
 								</div>
 							</div>
 						</div>
