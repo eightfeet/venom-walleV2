@@ -7,7 +7,24 @@ import validate from "~/validate";
 import AddressPicker from "./../AddressSelecter";
 import { dormancyFor, countDown } from "~/utils/tools";
 import s from "./address.scss";
-import { AddressModalParameters, cardIdRequestEnum } from "./Address";
+import { AddressModalParameters, cardIdRequestEnum, receiverInfoType } from "./Address";
+
+export interface submitParames  {
+	/** 收货人 */
+	receiver: string;
+	/** 收货人手机 */
+	phone: string;
+	/** 省市区 */
+	regions: string;
+	/** 省市区名称 */
+	regionsName: string;
+	/** 详细地址 */
+	address: string;
+	/** 身份证号码 */
+	idcode?: string;
+	/** 手机验证码 */
+	verificationvode?: string | number
+}
 
 /**
  *
@@ -16,11 +33,11 @@ import { AddressModalParameters, cardIdRequestEnum } from "./Address";
  * @extends {Modal}
  */
 class AddressModal extends Modal {
-  Msg: any;
-  playerPhone: any;
-  receiverInfo: any;
-  cardIdRequest: any;
-  AddressPicker: any;
+  Msg: Msg;
+  playerPhone: string;
+  receiverInfo: receiverInfoType;
+  cardIdRequest: cardIdRequestEnum;
+  AddressPicker: AddressPicker;
   formStyle: any;
   showNotebox: boolean;
   checkVerificationCode: any;
@@ -117,7 +134,7 @@ class AddressModal extends Modal {
    * params = {playerPhone, receiverName, receiverPhone, cardIdRequest, region, regionName, address, idCard}
    * @memberof AddressModal
    */
-  updateParams = (params) => {
+  updateParams = (params: receiverInfoType & {playerPhone: string; cardIdRequest: cardIdRequestEnum}) => {
 	  if (Object.prototype.toString.call(params) !== "[object Object]") {
 		  return;
 	  }
@@ -166,7 +183,7 @@ class AddressModal extends Modal {
    * @returns
    * @memberof AddressModal
    */
-  showModal = (submit, cancel, success) => {
+   showModal = async (submit: (parames: submitParames) => void, cancel?: () => void, success?: (data: any, parames: submitParames) => void) => {
 	  const { id } = this.state;
 	  const modalElement = getIdDom(id);
 	  const {
@@ -242,12 +259,12 @@ class AddressModal extends Modal {
 		`;
 
 	  if (!modalElement) {
-		  return this.create(
+		  await this.create(
 			  {
 				  article: `
 				  <div class="${s.addressBox} ${id}_addressbox">
-				  	${contentTopStyle ? `<div class="${s.top} ${id}_top" style="${contentTopStyle}">&nbsp;</div>` : "" }
-					${contentBottomStyle ? `<div class="${s.bottom} ${id}_bottom" style="${contentBottomStyle}">&nbsp;</div>` : "" }
+				  	${contentTopStyle ? `<div class="${s.top} ${id}_top" style="${contentTopStyle}">&nbsp;</div>` : ""}
+					${contentBottomStyle ? `<div class="${s.bottom} ${id}_bottom" style="${contentBottomStyle}">&nbsp;</div>` : ""}
 					<div class="${s.cancel} address_close ${id}_close" ${closeStyle ? `style="${closeStyle}"` : ""}>&nbsp;</div>
 					<div class="${s.formBox}  ${id}_formbox">
 						<h3 ${headerStyle ? `style="${headerStyle}"` : ""} class="${id}_header">填写地址</h3>
@@ -265,7 +282,7 @@ class AddressModal extends Modal {
 								</div>
 								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
 									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>地址：</label>
-									<button id="${this.addressTrigger}" class="${s.trigger} address__picker__button ${id}_input" ${inputStyle ? `style="${inputStyle}"` : "" } >请选择收货省市区/县</button>
+									<button id="${this.addressTrigger}" class="${s.trigger} address__picker__button ${id}_input" ${inputStyle ? `style="${inputStyle}"` : ""} >请选择收货省市区/县</button>
 								</div>
 								<div class="${s.item} ${id}_row" ${rowStyle ? `style="${rowStyle}"` : ""}>
 									<label class="${s.label} ${id}_label" ${labelStyle ? `style="${labelStyle}"` : ""}>&nbsp;</label>
@@ -281,25 +298,21 @@ class AddressModal extends Modal {
 				`
 			  },
 			  true
-		  )
-			  .then(() => dormancyFor(500))
-			  .then(() => {
-				  if (this.readyFillBack) {
-					  this.dataFillback();
-				  }
-			  })
-			  .then(() => this.handleDom(submit, cancel, success));
+		  );
+		  await dormancyFor(500);
+		  if (this.readyFillBack) {
+			  this.dataFillback();
+		  }
+		  return this.handleDom(submit, cancel, success);
 	  }
 
 	  modalElement.querySelector(`.${id}_player`).innerHTML = playerDom;
-	  return this.show()
-		  .then(() => {
-			  if (this.readyFillBack) {
-				  this.dataFillback();
-			  }
-		  })
-		  .then(() => this.handleDom(submit, cancel, success));
-  };
+	  await this.show();
+	   if (this.readyFillBack) {
+		   this.dataFillback();
+	   }
+	   return this.handleDom(submit, cancel, success);
+   };
 
   /**
    *
@@ -318,7 +331,7 @@ class AddressModal extends Modal {
    * @param {Function} cancel
    * @memberof AddressModal
    */
-  handleDom = (submit, cancel, success) => {
+  handleDom = (submit: (parames: submitParames) => void, cancel?: () => void, success?: (data: any, parames: submitParames) => void) => {
 	  const { id } = this.state;
 	  const modalElement = getIdDom(id);
 	  const submitNode: HTMLDivElement = modalElement.querySelector(
@@ -462,7 +475,7 @@ class AddressModal extends Modal {
    * @returns
    * @memberof AddressModal
    */
-  handleSubmit = (submit, success) => {
+  handleSubmit = (submit: (parames: submitParames) => void, success: (data: any, parames: submitParames) => void) => {
 	  const { id } = this.state;
 	  const modalElement = getIdDom(id);
 	  const idcodeNode: HTMLFormElement = modalElement.querySelector(
@@ -496,7 +509,7 @@ class AddressModal extends Modal {
 		  ? verificationvodeDom.value
 		  : undefined;
 
-	  const data: any = { receiver, phone, regions, regionsName, address };
+	  const data: submitParames = { receiver, phone, regions, regionsName, address };
 
 	  if (idcode) {
 		  data.idcode = idcode;

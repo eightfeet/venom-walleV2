@@ -1,6 +1,24 @@
 import Modal from "@eightfeet/modal";
 import { Option } from '@eightfeet/picker';
-import { AddressModalParameters } from "./Address";
+import Msg from "./../Msg";
+import AddressPicker from "./../AddressSelecter";
+import { AddressModalParameters, cardIdRequestEnum, receiverInfoType } from "./Address";
+export interface submitParames {
+    /** 收货人 */
+    receiver: string;
+    /** 收货人手机 */
+    phone: string;
+    /** 省市区 */
+    regions: string;
+    /** 省市区名称 */
+    regionsName: string;
+    /** 详细地址 */
+    address: string;
+    /** 身份证号码 */
+    idcode?: string;
+    /** 手机验证码 */
+    verificationvode?: string | number;
+}
 /**
  *
  * 地址弹窗
@@ -8,11 +26,11 @@ import { AddressModalParameters } from "./Address";
  * @extends {Modal}
  */
 declare class AddressModal extends Modal {
-    Msg: any;
-    playerPhone: any;
-    receiverInfo: any;
-    cardIdRequest: any;
-    AddressPicker: any;
+    Msg: Msg;
+    playerPhone: string;
+    receiverInfo: receiverInfoType;
+    cardIdRequest: cardIdRequestEnum;
+    AddressPicker: AddressPicker;
     formStyle: any;
     showNotebox: boolean;
     checkVerificationCode: any;
@@ -33,7 +51,10 @@ declare class AddressModal extends Modal {
      * params = {playerPhone, receiverName, receiverPhone, cardIdRequest, region, regionName, address, idCard}
      * @memberof AddressModal
      */
-    updateParams: (params: any) => void;
+    updateParams: (params: receiverInfoType & {
+        playerPhone: string;
+        cardIdRequest: cardIdRequestEnum;
+    }) => void;
     /**
      *
      * 显示地址模块弹窗
@@ -43,7 +64,7 @@ declare class AddressModal extends Modal {
      * @returns
      * @memberof AddressModal
      */
-    showModal: (submit: any, cancel: any, success: any) => Promise<void>;
+    showModal: (submit: (parames: submitParames) => void, cancel?: () => void, success?: (data: any, parames: submitParames) => void) => Promise<void>;
     /**
      *
      * 以非移除方式隐藏弹窗
@@ -58,7 +79,7 @@ declare class AddressModal extends Modal {
      * @param {Function} cancel
      * @memberof AddressModal
      */
-    handleDom: (submit: any, cancel: any, success: any) => void;
+    handleDom: (submit: (parames: submitParames) => void, cancel?: () => void, success?: (data: any, parames: submitParames) => void) => void;
     /**
      *
      * 数据回填
@@ -73,6 +94,6 @@ declare class AddressModal extends Modal {
      * @returns
      * @memberof AddressModal
      */
-    handleSubmit: (submit: any, success: any) => void;
+    handleSubmit: (submit: (parames: submitParames) => void, success: (data: any, parames: submitParames) => void) => void;
 }
 export default AddressModal;

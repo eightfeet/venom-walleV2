@@ -1,4 +1,5 @@
 import Modal from "@eightfeet/modal";
+import { PrizesItem } from "~/types/prizes";
 import { ResultModalParameters } from './ResultModal';
 declare class ResultModal extends Modal {
     modalTitle: any;
@@ -21,7 +22,7 @@ declare class ResultModal extends Modal {
         contentWrap: any;
     };
     constructor({ style: { prizeAlias, prizeName, awardMsg, prizeImg, memo, contentTop, contentBottom, submit, header, article, footer, contentWrap, ...other }, modalTitle, outerFrameId, onCancel, submitText, onEnsure, submitAddressText, animation, ...more }: ResultModalParameters);
-    showModal: (prize: any) => Promise<unknown>;
+    showModal: (prize: PrizesItem) => Promise<unknown>;
     hideModal: () => Promise<void>;
 }
 export default ResultModal;

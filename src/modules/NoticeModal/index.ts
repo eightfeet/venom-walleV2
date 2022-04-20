@@ -75,7 +75,7 @@ class NoticeModal extends Modal {
 			<div id="${id}_header" ${headerStyle ? `style="${headerStyle}"` : ''} class="${id}_header">
 				${title ? `<div ${ modalTitleStyle ? `style="${modalTitleStyle}"` : '' }  class="${id}_modaltitle">${title}</div>` : '' }
 			</div>
-			<div id="${id}_article" ${articleStyle ? `style="${articleStyle}"` : ''} class="${id}_article"> ${content || ''} </div>
+			<div id="${id}_article" ${articleStyle ? `style="${articleStyle}"` : ''} class="${id}_article_content"> ${content || ''} </div>
 			<div id="${id}_footer" ${footerStyle ? `style="${footerStyle}"` : ''} class="${id}_footer">
 				${
 					footer

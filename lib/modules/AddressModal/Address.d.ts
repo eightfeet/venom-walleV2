@@ -3,31 +3,57 @@ import { Option } from '@eightfeet/picker';
 import * as CSS from "csstype";
 import { MessageStyle } from "../Msg";
 export interface AddressModalThemeType extends ModalStyle {
-    content: CSS.Properties;
-    contentTop: CSS.Properties;
-    contentBottom: CSS.Properties;
-    submit: CSS.Properties;
-    header: CSS.Properties;
-    article: CSS.Properties;
-    footer: CSS.Properties;
-    close: CSS.Properties;
-    regions: CSS.Properties;
-    row: CSS.Properties;
-    subTitle: CSS.Properties;
-    label: CSS.Properties;
-    input: CSS.Properties;
-    textarea: CSS.Properties;
-    codeButton: CSS.Properties;
-    codeButtonDisable: CSS.Properties;
-    notice: CSS.Properties;
-    noticeIcon: CSS.Properties;
-    noticeArrow: CSS.Properties;
+    content?: CSS.Properties;
+    contentTop?: CSS.Properties;
+    contentBottom?: CSS.Properties;
+    submit?: CSS.Properties;
+    header?: CSS.Properties;
+    article?: CSS.Properties;
+    footer?: CSS.Properties;
+    close?: CSS.Properties;
+    regions?: CSS.Properties;
+    row?: CSS.Properties;
+    subTitle?: CSS.Properties;
+    label?: CSS.Properties;
+    input?: CSS.Properties;
+    textarea?: CSS.Properties;
+    codeButton?: CSS.Properties;
+    codeButtonDisable?: CSS.Properties;
+    notice?: CSS.Properties;
+    noticeIcon?: CSS.Properties;
+    noticeArrow?: CSS.Properties;
+}
+export interface receiverInfoType {
+    /**
+     * 身份证号
+     */
+    idCard?: string;
+    /**
+     * 收货人姓名
+     */
+    receiverName?: string;
+    /**
+     * 收货人电话
+     */
+    receiverPhone?: string;
+    /**
+     * 收货省市区id['15', '1513', '151315'],
+     */
+    region?: string[];
+    /**
+     * 收货省市区 ['广东省','广州市','天河区']
+     */
+    regionName?: string[];
+    /**
+     * 详细地址
+     */
+    address?: string;
 }
 export interface AddressModalParameters extends ModalParameters {
     /**
      * 地址弹窗皮肤
      */
-    AddressModalTheme: AddressModalThemeType;
+    AddressModalTheme?: AddressModalThemeType;
     /**
      * AddressPickerConfig
      */
@@ -47,32 +73,7 @@ export interface AddressModalParameters extends ModalParameters {
     /**
      * 默认收货人信息
      */
-    receiverInfo: {
-        /**
-         * 身份证号
-         */
-        idCard: string;
-        /**
-         * 收货人姓名
-         */
-        receiverName: string;
-        /**
-         * 收货人电话
-         */
-        receiverPhone: string;
-        /**
-         * 收货省市区id['15', '1513', '151315'],
-         */
-        region: string[];
-        /**
-         * 收货省市区 ['广东省','广州市','天河区']
-         */
-        regionName: string[];
-        /**
-         * 详细地址
-         */
-        address: string;
-    };
+    receiverInfo: receiverInfoType;
     /**
      * 要求身份证
      */

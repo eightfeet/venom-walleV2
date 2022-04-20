@@ -1,7 +1,7 @@
 import { ModalStyle } from '@eightfeet/modal';
 import * as CSS from 'csstype';
 
-interface NoticeModalStyle extends ModalStyle {
+export interface NoticeModalStyle extends ModalStyle {
     /**内容包裹 */
     contentWrap?: CSS.Properties;
     /**内容顶部 */
