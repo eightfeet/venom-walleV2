@@ -1,6 +1,6 @@
 {
   "name": "@byhealth/walle",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "",
   "scripts": {
     "build": "rm -rf ./lib && webpack --mode=production",
@@ -16,7 +16,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@eightfeet/loading": "^2.0.8",
-    "@eightfeet/message": "^2.0.22",
+    "@eightfeet/message": "^2.0.25",
     "@eightfeet/modal": "^2.2.30",
     "@eightfeet/picker": "^1.0.14",
     "core-js": "^3.2.1",
