@@ -8,7 +8,7 @@ import validate from './validate';
 import Message from '@eightfeet/message';
 import Modal from '@eightfeet/modal';
 import { setEmBase, createDom, removeDom, combineDomByClass } from './utils/htmlFactory';
-import { formatWheelsData, getPositionByDefaultValue } from './utils/regionsWheelsHelper';
+import { getPositionByDefaultValue } from './utils/regionsWheelsHelper';
 import { isObject, countDown, dormancyFor, fixpx } from './utils/tools';
 import { onceTransitionEnd, onceAnimationEnd } from './utils/web-animation-club';
 declare const htmlFactory: {
@@ -26,7 +26,20 @@ declare const tools: {
     setEmBase: typeof setEmBase;
 };
 declare const regionsDataFormat: {
-    formatWheelsData: typeof formatWheelsData;
+    formatWheelsData: (data: {
+        [key: string]: string;
+    }) => {
+        id: string;
+        value: any;
+        childs: {
+            id: string;
+            value: any;
+            childs: {
+                id: string;
+                value: any;
+            }[];
+        }[];
+    }[];
     getPositionByDefaultValue: typeof getPositionByDefaultValue;
 };
 declare const webAnimation: {

@@ -1,64 +1,3 @@
-/** 地址数据格式化 */
-export function formatWheelsData(data: {
-  [keys: string]: any;
-  hasOwnProperty: (arg: string) => any;
-}) {
-	const provinces = [];
-	const cities = [];
-	const counties = [];
-
-	for (const key in data) {
-		if (data.hasOwnProperty(key)) {
-			const items = data[key];
-			for (const el in items) {
-				if (items.hasOwnProperty(el)) {
-					const element = items[el];
-					if (el.length === 2) {
-						provinces.push({
-							id: el,
-							value: element,
-							childs: []
-						});
-					}
-					if (el.length === 4) {
-						cities.push({
-							id: el,
-							value: element,
-							childs: []
-						});
-					}
-					if (el.length === 6) {
-						counties.push({
-							id: el,
-							value: element
-						});
-					}
-				}
-			}
-		}
-	}
-
-	for (let indexP = 0; indexP < provinces.length; indexP++) {
-		const elementP = provinces[indexP];
-		const elementPChild = elementP.childs;
-		for (let indexCi = 0; indexCi < cities.length; indexCi++) {
-			const elementCi = cities[indexCi];
-			const elementCiChild = elementCi.childs;
-			if (elementP.id === elementCi.id.slice(0, 2)) {
-				elementPChild.push(elementCi);
-				for (let indexC = 0; indexC < counties.length; indexC++) {
-					const elementC = counties[indexC];
-					if (elementCi.id === elementC.id.slice(0, 4)) {
-						elementCiChild.push(elementC);
-					}
-				}
-			}
-		}
-	}
-
-	return provinces;
-}
-
 export function getPositionByDefaultValue(
 	defaultData: any[],
 	wheels: { data: any }[]
@@ -92,3 +31,33 @@ export function getPositionByDefaultValue(
 	}
 	return position;
 }
+
+/** 地址数据格式化 */
+export const formatWheelsData = (data: {
+	[key: string]: string
+}) => {
+	const provinces = data['00'];
+	const result = Object.keys(provinces).map(rootKey => {
+		const province = provinces[rootKey];
+		return {
+			id: rootKey,
+			value: province,
+			childs: Object.keys(data[rootKey]).map(cityKey => {
+				const city = data[rootKey][cityKey];
+				return {
+					id: cityKey,
+					value: city,
+					childs: Object.keys(data[cityKey] || []).map(districtKey => {
+						const district = data[cityKey][districtKey];
+						return {
+							id: districtKey,
+							value: district
+						};
+					})
+				};
+			})
+		};
+	});
+	return result;
+};
+
